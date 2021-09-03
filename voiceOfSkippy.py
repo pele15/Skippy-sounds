@@ -1,7 +1,7 @@
  # import Adafruit IO REST client.
 from Adafruit_IO import Client, Feed, RequestError
-# from pydub import AudioSegment
-# from pydub.playback import play
+from pydub import AudioSegment
+from pydub.playback import play
   
 
 ADAFRUIT_IO_USERNAME = "pele15"
@@ -14,13 +14,15 @@ aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 # except RequestError: # create feeds
 #     feed = Feed(name="hello")
 #     hellofeed = aio.create_feed(feed)
+
+
 hellofeed = aio.feeds('hello-key')
-# song = AudioSegment.from_wav("sounds/h.wav")
+song = AudioSegment.from_wav("sounds/h.wav")
 # print('playing sound using  pydub')
 
 while True:
     hello = aio.receive(hellofeed.key)
     if (int(hello.value) == 1):
-        print('hi')
-        #play(song)
+        #print('hi')
+        play(song)
 
