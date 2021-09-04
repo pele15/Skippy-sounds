@@ -64,7 +64,7 @@ def main():
     #hello.start()
     #pickle.start()
     feeds = aio.feeds()
-    print('Feeds: ', feeds[0])
+    print('Feeds: ', feeds[0].value)
     # while True:
     #     pass
 

@@ -24,7 +24,7 @@ ADAFRUIT_IO_USERNAME = 'pele15'
 # FEED_SOUNDS = ["h.wav", "p.wav"]
 FEED_IDs_SOUNDS_DICT = {
     'hello-key': "hello.wav",
-    'bye-feed': "p.wav"
+    'bye-feed': "bye.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
@@ -56,7 +56,8 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     if payload == "1":
-        audio = AudioSegment.from_mp3("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
+        print("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
+        audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
         play(audio)
 
     
