@@ -17,12 +17,17 @@ aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
 
 hellofeed = aio.feeds('hello-key')
-song = AudioSegment.from_wav("sounds/h.wav")
+picklefeed = aio.feeds('pickle-feed')
+skippyHello = AudioSegment.from_wav("sounds/h.wav")
+pickleSound = AudioSegment.from_wav("sounds/p.wav")
 # print('playing sound using  pydub')
 
 while True:
     hello = aio.receive(hellofeed.key)
+    pickle = aio.receive(pickle.key)
     if (int(hello.value) == 1):
         #print('hi')
-        play(song)
-
+        play(skippyHello)
+    elif (int(pickle.value) == 1):
+        print('pickle')
+        play(pickleSound)
