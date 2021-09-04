@@ -13,7 +13,7 @@ from Adafruit_IO import MQTTClient
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_dYvR65F3zytX0KEbDdNonAHdcgAZ'
+ADAFRUIT_IO_KEY = 'aio_cWPG24Lh1GdJQBhfFnGvECe07XHq'
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
@@ -23,7 +23,7 @@ ADAFRUIT_IO_USERNAME = 'pele15'
 # FEED_IDs = ['hello-key', 'bye-feed']
 # FEED_SOUNDS = ["h.wav", "p.wav"]
 FEED_IDs_SOUNDS_DICT = {
-    'hello-key': "h.wav",
+    'hello-key': "hello.wav",
     'bye-feed': "p.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
@@ -56,11 +56,11 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     if payload == "1":
-        audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
+        audio = AudioSegment.from_mp3("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
         play(audio)
 
     
-    
+   
 
 # Create an MQTT client instance.
 client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
