@@ -13,7 +13,7 @@ from Adafruit_IO import MQTTClient
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_CYmD32fAu5MyU0GN18gPxmlYyq1C'
+ADAFRUIT_IO_KEY = 'aio_IUem13LsPKZIWLUWP9ftRzgYX2Dd'
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
@@ -27,7 +27,9 @@ FEED_IDs_SOUNDS_DICT = {
     'bye-feed': "bye.wav",
     'yo':       "yo.wav",
     'brett':    "brett.wav",
-    'coffee': "coffee.wav"
+    'coffee': "coffee.wav",
+    'friend': "friend.wav",
+    'skippy': "skippy.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
