@@ -5,7 +5,7 @@ from pydub.playback import play
   
 
 ADAFRUIT_IO_USERNAME = "pele15"
-ADAFRUIT_IO_KEY = "aio_OpZB40phr1U0eoJZ1dV2Oly0jnm9"
+ADAFRUIT_IO_KEY = "aio_tudh78bpUrDCJg8w9gEsaMpUv4YQ"
 
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
