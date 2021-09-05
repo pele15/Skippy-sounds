@@ -29,7 +29,8 @@ FEED_IDs_SOUNDS_DICT = {
     'brett':    "brett.wav",
     'coffee': "coffee.wav",
     'friend': "friend.wav",
-    'skippy': "skippy.wav"
+    'skippy': "skippy.wav",
+    'random': "nuke.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
