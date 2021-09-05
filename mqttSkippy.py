@@ -30,7 +30,7 @@ FEED_IDs_SOUNDS_DICT = {
     'coffee': "coffee.wav",
     'friend': "friend.wav",
     'skippy': "skippy.wav",
-    'random': "nuke.wav"
+    'random': "pickle.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
@@ -62,7 +62,6 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     if payload == "1":
-        print("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
         audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
         play(audio)
 
