@@ -45,7 +45,8 @@ FEED_IDs_SOUNDS_DICT = {
     'great': "great.wav",
     'ad': "ad.wav",
     'notsure': "notsure.wav",
-    'steph': "steph.wav"
+    'steph': "steph.wav",
+    'fern': "fern.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
