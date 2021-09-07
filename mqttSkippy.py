@@ -13,11 +13,11 @@ from Adafruit_IO import MQTTClient
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_IUem13LsPKZIWLUWP9ftRzgYX2Dd'
+ADAFRUIT_IO_KEY = 'aio_gJpx75KaST3oBmmy7F0lXe3sXJ8x'
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
-ADAFRUIT_IO_USERNAME = 'pele15'
+ADAFRUIT_IO_USERNAME = 'carbonorigins'
 
 # Set to the ID of the feed to subscribe to for updates.
 # FEED_IDs = ['hello-key', 'bye-feed']
@@ -30,7 +30,19 @@ FEED_IDs_SOUNDS_DICT = {
     'coffee': "coffee.wav",
     'friend': "friend.wav",
     'skippy': "skippy.wav",
-    'random': "pickle.wav"
+    'random': "pickle.wav",
+    'jokes': "jokes.wav",
+    'cross-road': "cross-road.wav",
+    'cross-road-resp': "cross-road-resp.wav",
+    'sweden': "sweden.wav",
+    'sweden-resp': "sweden-resp.wav",
+    'guac': "guac.wav",
+    'guac-resp': "guac-resp.wav",
+    'drink': "drink.wav",
+    'food-btn': "food.wav",
+    'heybuddy':"buddy.wav",
+    'breakfast': "breakfast.wav",
+    'great': "great.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
@@ -62,8 +74,12 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     if payload == "1":
-        audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
-        play(audio)
+        try:
+            audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
+            play(audio)
+        except:
+            print('Couldn\'t find the audio file. Please add one')
+            pass
 
     
    
