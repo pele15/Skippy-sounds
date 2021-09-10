@@ -13,7 +13,7 @@ from Adafruit_IO import MQTTClient
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_CUBX32RqIGsylteSBgUvP8Hj4l2g'
+ADAFRUIT_IO_KEY = 'aio_kuHN883swGQxbswrMwXLswvf6TK3'
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
@@ -48,9 +48,9 @@ FEED_IDs_SOUNDS_DICT = {
     'steph': "steph.wav",
     'hry': "hry.wav",
     'luna': "luna.wav",
-    'byehyde': "byehyde.wav",
-    'great':"greathyde.wav",
-    'hellohyde':"hellohyde.wav"
+    'byehyde': "jax.wav",
+    'great':"jax.wav",
+    'hellohyde':"jax.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
@@ -85,6 +85,12 @@ def message(client, feed_id, payload):
         try:
             audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
             play(audio)
+            if feed_id == "hellohyde":
+                audio = AudioSegment.from_wav("sounds/" + "yay.wav")
+                play(audio)
+            elif feed_id == "great":
+                    audio = AudioSegment.from_wav("sounds/" + "yeah.wav")
+                    play(audio)
         except:
             print('Couldn\'t find the audio file. Please add one')
             pass
