@@ -13,7 +13,7 @@ from Adafruit_IO import MQTTClient
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_jSrw87virxzpyLt5s4BUC00WVxeX'
+ADAFRUIT_IO_KEY = 'aio_Vpgm47lO10N1EJTpDcGdUrEemJbn'
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
@@ -88,8 +88,6 @@ def message(client, feed_id, payload):
             pass
 
     
-   
-
 # Create an MQTT client instance.
 client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
