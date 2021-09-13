@@ -13,7 +13,7 @@ from Adafruit_IO import MQTTClient
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_Vpgm47lO10N1EJTpDcGdUrEemJbn'
+ADAFRUIT_IO_KEY = 'aio_ufnG66YR6w11qTidAZBri2oGpYET'
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
@@ -26,11 +26,9 @@ FEED_IDs_SOUNDS_DICT = {
     'hello-key': "hello.wav",
     'bye-feed': "bye.wav",
     'yo':       "yo.wav",
-    'brett':    "brett.wav",
     'coffee': "coffee.wav",
     'friend': "friend.wav",
-    'skippy': "phil.wav",
-    'random': "pickle.wav",
+    'skippy': "skippy.wav",
     'jokes': "jokes.wav",
     'cross-road': "cross-road.wav",
     'cross-road-resp': "cross-road-resp.wav",
@@ -40,15 +38,18 @@ FEED_IDs_SOUNDS_DICT = {
     'guac-resp': "guac-resp.wav",
     'drink': "drink.wav",
     'food-btn': "food.wav",
-    'heybuddy':"buddy.wav",
     'breakfast': "breakfast.wav",
     'great': "great.wav",
     'ad': "ad.wav",
     'notsure': "notsure.wav",
-    'steph': "steph.wav",
     'hry': "hry.wav",
-    'luna': "luna.wav",
-    'hellohyde':"amogha.wav"
+    'food-list': "food-list.wav",
+    'noprob':"noprob.wav",
+    'deliver':"deliver.wav",
+    'vaccum':"vaccum.wav",
+    'vaccum-resp':"vaccum-resp.wav",
+    'way':"way.wav",
+    'roll':"roll.wav"
 }
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 
@@ -87,7 +88,6 @@ def message(client, feed_id, payload):
             print('Couldn\'t find the audio file. Please add one')
             pass
 
-    
 # Create an MQTT client instance.
 client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
