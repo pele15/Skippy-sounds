@@ -44,6 +44,7 @@ FEED_IDs_SOUNDS_DICT = {
     'punchline': "",
     'caribou': "caribou.wav",
     'potbelly': "potbelly.wav",
+    'scan': "scan.wav"
     # 'pickup':"rene.wav",
     # 'open':"open.wav",
     # 'close':"close.wav",
