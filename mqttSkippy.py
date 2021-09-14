@@ -10,11 +10,12 @@ from pydub.playback import play
 # Import Adafruit IO MQTT client.
 from Adafruit_IO import MQTTClient
 import random
+import argparse
 
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'aio_sssN36O1kpV4LH7qc4YpYj1m2RcY'
+
 
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
@@ -50,7 +51,6 @@ FEED_IDs_SOUNDS_DICT = {
     'open':"open.wav",
     'close':"close.wav",
     'thanks':"thanks.wav",
-    'matt' "mary.wav",
 }
 
 JOKES_DICT = {
@@ -59,7 +59,10 @@ JOKES_DICT = {
     'vaccum':"vaccum-resp",
     'cross-road': "cross-road-resp",
     'texas':"texas-resp",
-    'metal': "metal-resp"
+    'metal': "metal-resp",
+    'insecure':"insecure-resp",
+    'rusty':"rusty-resp",
+    'rust':"rust-resp"
 }
 
 global joke_key, ind
@@ -68,7 +71,6 @@ joke_key = ""
 FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 JOKES_IDs = list(JOKES_DICT.keys())
 JOKES_IDs_INDS = random.sample(JOKES_IDs, len(JOKES_IDs))
-
 
 # Define callback functions which will be called when certain events happen.
 def connected(client):
@@ -107,11 +109,8 @@ def message(client, feed_id, payload):
                 audio = AudioSegment.from_wav("sounds/" + str(joke_key) + ".wav")
 
             elif (feed_id == "punchline"):
-                print("elif")
-                print("sounds/" + str(JOKES_DICT[joke_key]) + ".wav")
                 audio = AudioSegment.from_wav("sounds/" + str(JOKES_DICT[joke_key]) + ".wav")
             else:
-                print("else")
                 audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
             play(audio)
         except:
@@ -120,6 +119,13 @@ def message(client, feed_id, payload):
 
 
 print("Total feed to be subscribed: ", len(FEED_IDs))
+
+parser = argparse.ArgumentParser(description='Pass the IO key')
+parser.add_argument('key', metavar='k', type=str,  
+        help='Pass Adafruit IO key')
+args = parser.parse_args()
+ADAFRUIT_IO_KEY = args.key
+
 # Create an MQTT client instance.
 client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 # Setup the callback functions defined above.
