@@ -55,7 +55,8 @@ JOKES_DICT = {
     'sweden':"sweden-resp",
     'vaccum':"vaccum-resp",
     'cross-road': "cross-road-resp",
-    'texas':"texas-resp"
+    'texas':"texas-resp",
+    'metal': "metal-resp"
 }
 
 global joke_key, ind
