@@ -50,7 +50,7 @@ FEED_IDs_SOUNDS_DICT = {
     'open':"open.wav",
     'close':"close.wav",
     'thanks':"thanks.wav",
-    'matt' "matt.wav",
+    'matt' "mary.wav",
 }
 
 JOKES_DICT = {
