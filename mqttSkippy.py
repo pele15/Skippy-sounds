@@ -24,7 +24,7 @@ ADAFRUIT_IO_USERNAME = 'carbonorigins'
 FEED_IDs_SOUNDS_DICT = {
     'hello-key': "hello.wav",
     'bye-feed': "bye.wav",
-    'yo':       "yo.wav",
+    #'yo':       "yo.wav",
     'coffee': "coffee.wav",
     'friend': "friend.wav",
     'skippy': "skippy.wav",
@@ -32,7 +32,7 @@ FEED_IDs_SOUNDS_DICT = {
     'drink': "drink.wav",
     'food-btn': "food.wav",
     'great': "great.wav",
-    'ad': "ad.wav",
+    #'ad': "ad.wav",
     'notsure': "notsure.wav",
     'hry': "hry.wav",
     'food-list': "food-list.wav",
@@ -42,12 +42,15 @@ FEED_IDs_SOUNDS_DICT = {
     'roll':"roll.wav", 
     'joke-question': "", # limit,
     'punchline': "",
-    'caribou': "caribou.wav",
-    'potbelly': "potbelly.wav",
-    # 'pickup':"rene.wav",
-    # 'open':"open.wav",
-    # 'close':"close.wav",
-    # 'thanks':"thanks.wav"
+    #'caribou': "caribou.wav",
+    #'potbelly': "potbelly.wav",
+    'scan': "scan.wav",
+    'hungry':"hungry.wav",
+    'pickup':"rene.wav",
+    'open':"open.wav",
+    'close':"close.wav",
+    'thanks':"thanks.wav",
+    'matt' "mary.wav",
 }
 
 JOKES_DICT = {
