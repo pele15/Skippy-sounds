@@ -30,7 +30,7 @@ FEED_IDs_SOUNDS_DICT = {
     'skippy': "skippy.wav",
     'jokes': "jokes.wav",
     'drink': "drink.wav",
-    #'food-btn': "food.wav",
+    'food-btn': "food.wav",
     'great': "great.wav",
     #'ad': "ad.wav",
     'notsure': "notsure.wav",
