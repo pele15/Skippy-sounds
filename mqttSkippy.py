@@ -42,7 +42,7 @@ FEED_IDs_SOUNDS_DICT = {
     # 'open':"open.wav",
     # 'close':"close.wav",
     # 'thanks':"thanks.wav",
-    'yes':"yes.wav",
+    'yes':"sean.wav",
     'thankyou':"thankyou.wav",
     'ricos':"ricos.wav",
 }
