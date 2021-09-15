@@ -1,7 +1,3 @@
-# Example of using the MQTT client class to subscribe to a feed and print out
-# any changes made to the feed.  Edit the variables below to configure the key,
-# username, and feed to subscribe to for changes.
-
 # Import standard python modules.
 import sys
 from pydub import AudioSegment
@@ -12,16 +8,11 @@ from Adafruit_IO import MQTTClient
 import random
 import argparse
 
-# Set to your Adafruit IO key.
-# Remember, your key is a secret,
-# so make sure not to publish it when you publish this code!
-
 
 # Set to your Adafruit IO username.
-# (go to https://accounts.adafruit.com to find your username)
 ADAFRUIT_IO_USERNAME = 'carbonorigins'
 
-# Set to the ID of the feed to subscribe to for updates.
+# Set the ID of the feed here. Please only limit to 27 feeds to avoid throttling issues
 FEED_IDs_SOUNDS_DICT = {
     'hello-key': "hello.wav",
     'bye-feed': "bye.wav",
@@ -41,16 +32,19 @@ FEED_IDs_SOUNDS_DICT = {
     'deliver':"deliver.wav",
     'way':"way.wav",
     'roll':"roll.wav", 
-    'joke-question': "", # limit,
+    'joke-question': "",
     'punchline': "",
-    #'caribou': "caribou.wav",
-    #'potbelly': "potbelly.wav",
+    'caribou': "caribou.wav",
+    'potbelly': "potbelly.wav",
     'scan': "scan.wav",
     'hungry':"hungry.wav",
-    'pickup':"rene.wav",
-    'open':"open.wav",
-    'close':"close.wav",
-    'thanks':"thanks.wav",
+    # 'pickup':"rene.wav",
+    # 'open':"open.wav",
+    # 'close':"close.wav",
+    # 'thanks':"thanks.wav",
+    'yes':"yes.wav",
+    'thankyou':"thankyou.wav",
+    'ricos':"ricos.wav",
 }
 
 JOKES_DICT = {
@@ -62,7 +56,8 @@ JOKES_DICT = {
     'metal': "metal-resp",
     'insecure':"insecure-resp",
     'rusty':"rusty-resp",
-    'rust':"rust-resp"
+    'rust':"rust-resp",
+    'battery':"battery-resp",
 }
 
 global joke_key, ind
