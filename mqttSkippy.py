@@ -88,7 +88,8 @@ GENERAL_DICT = {
     'punchline': "",
     'bye-feed': "bye.wav",
     'thankyou':"thankyou.wav",
-    'bye-feed': "bye.wav",
+    'hry': "hry.wav",
+    'great': "great.wav",
 }
 
 
