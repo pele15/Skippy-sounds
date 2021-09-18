@@ -70,7 +70,8 @@ STARTUP_EVENT_DICT = {
     'selfie': "selfie",
     'selfiebeer': "selfiebeer",
     'takebeer': "takebeer",
-    'skipster': "skipster"
+    'skipster': "skipster",
+    'jerry' : "jerry",
 }
 
 STARTUP_FEED_COUNT= {
