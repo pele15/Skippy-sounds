@@ -45,8 +45,6 @@ FEED_IDs_SOUNDS_DICT = {
     'yes':"sean.wav",
     'thankyou':"thankyou.wav",
     'ricos': "ricos.wav",
-    'zis': "ziscuit.wav",
-    'seven': "seven.wav",
 }
 
 JOKES_DICT = {
