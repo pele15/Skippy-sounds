@@ -61,48 +61,12 @@ JOKES_DICT = {
     'battery':"battery-resp",
 }
 
-STARTUP_EVENT_DICT = {
-    'hello': "hello",
-    'ready': "ready",
-    'beer': "beer",
-    'takebeer': "takebeer",
-    'scan': "scan",
-    'selfie': "selfie",
-    'selfiebeer': "selfiebeer",
-    'takebeer': "takebeer",
-    'skipster': "skipster",
-    'jerry' : "jerry",
-}
-
-STARTUP_FEED_COUNT= {
-    'beer': 1,
-    'scan': 1,
-    'selfie': 2,
-    'takebeer': 2,
-}
-
-
-GENERAL_DICT = {
-    'skippy': "skippy.wav",
-    'jokes': "jokes.wav",
-    'joke-question': "",
-    'punchline': "",
-    'bye-feed': "bye.wav",
-    'thankyou':"thankyou.wav",
-    'hry': "hry.wav",
-    'great': "great.wav",
-}
-
-
-STARTUP_FEED_IDs = ['startup.' + k for k in STARTUP_EVENT_DICT.keys()]
 global joke_key, ind
 ind = 0
 joke_key = ""
 
 
-#FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
-FEED_IDs = STARTUP_FEED_IDs
-FEED_IDs = FEED_IDs + list(GENERAL_DICT.keys())
+FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
 JOKES_IDs = list(JOKES_DICT.keys())
 JOKES_IDs_INDS = random.sample(JOKES_IDs, len(JOKES_IDs))
 
@@ -136,13 +100,6 @@ def message(client, feed_id, payload):
                 audio = AudioSegment.from_wav("sounds/" + str(joke_key) + ".wav")
             elif (feed_id == "punchline"):
                 audio = AudioSegment.from_wav("sounds/" + str(JOKES_DICT[joke_key]) + ".wav")
-            elif feed_id.startswith('startup.'):
-                try:
-                    maxrange = str(STARTUP_FEED_COUNT[feed_id.replace("startup.", "")])
-                    feed_count = random.randint(1, int(maxrange))
-                    audio = AudioSegment.from_wav("sounds/hackYourCity/" + str(STARTUP_EVENT_DICT[feed_id.replace("startup.", "")]) + "-" + str(feed_count) + ".wav")
-                except:
-                    audio = AudioSegment.from_wav("sounds/hackYourCity/" + str(STARTUP_EVENT_DICT[feed_id.replace("startup.", "")]) + ".wav")
             else:
                 audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
             play(audio)
