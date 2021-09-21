@@ -1,51 +1,12 @@
-# Import standard python modules.
 import sys
+import os
+import random
+import configparser
+import random
+
 from pydub import AudioSegment
 from pydub.playback import play
-
-# Import Adafruit IO MQTT client.
 from Adafruit_IO import MQTTClient
-import random
-import argparse
-
-
-# Set to your Adafruit IO username.
-ADAFRUIT_IO_USERNAME = 'carbonorigins'
-
-# Set the ID of the feed here. Please only limit to 27 feeds to avoid throttling issues
-FEED_IDs_SOUNDS_DICT = {
-    'hello-key': "hello.wav",
-    'bye-feed': "bye.wav",
-    #'yo':       "yo.wav",
-    #'coffee': "coffee.wav",
-    'friend': "friend.wav",
-    'skippy': "skippy.wav",
-    'jokes': "jokes.wav",
-    'drink': "drink.wav",
-    'food-btn': "food.wav",
-    'great': "great.wav",
-    #'ad': "ad.wav",
-    'notsure': "notsure.wav",
-    'hry': "hry.wav",
-    #'food-list': "food-list.wav",
-    'noprob':"noprob.wav",
-    'deliver':"deliver.wav",
-    'way':"way.wav",
-    'roll':"roll.wav", 
-    'joke-question': "",
-    'punchline': "",
-    'caribou': "caribou.wav",
-    'potbelly': "potbelly.wav",
-    'scan': "scan.wav",
-    'hungry':"hungry.wav",
-    # 'pickup':"rene.wav",
-    # 'open':"open.wav",
-    # 'close':"close.wav",
-    # 'thanks':"thanks.wav",
-    'yes':"sean.wav",
-    'thankyou':"thankyou.wav",
-    'ricos': "ricos.wav",
-}
 
 JOKES_DICT = {
     'guac':"guac-resp",
@@ -63,8 +24,36 @@ global joke_key, ind
 ind = 0
 joke_key = ""
 
-
-FEED_IDs = FEED_IDs_SOUNDS_DICT.keys()
+FEED_IDs = [
+            'ad',
+            'hello-key', 
+            'bye-feed', 
+            'coffee', 
+            'friend', 
+            'jokes', 
+            'drink', 
+            'food-btn',
+            'food-list', 
+            'great', 
+            'notsure', 
+            'hry', 
+            'noprob', 
+            'deliver', 
+            'way', 
+            'roll', 
+            'joke-question', 
+            'punchline', 
+            'caribou', 
+            'potbelly', 
+            'scan', 
+            'hungry', 
+            'yes',
+            'phrases', 
+            'thankyou', 
+            'ricos',
+            'freshii',
+            
+        ]
 JOKES_IDs = list(JOKES_DICT.keys())
 JOKES_IDs_INDS = random.sample(JOKES_IDs, len(JOKES_IDs))
 
@@ -95,11 +84,12 @@ def message(client, feed_id, payload):
             if (feed_id == "joke-question"):
                 joke_key = JOKES_IDs_INDS[ind]
                 ind = (ind + 1) % len(JOKES_IDs)
-                audio = AudioSegment.from_wav("sounds/" + str(joke_key) + ".wav")
+                audio = AudioSegment.from_wav("sounds/joke-question/"  + str(joke_key) + ".wav")
             elif (feed_id == "punchline"):
-                audio = AudioSegment.from_wav("sounds/" + str(JOKES_DICT[joke_key]) + ".wav")
+                audio = AudioSegment.from_wav("sounds/punchline/" + str(JOKES_DICT[joke_key]) + ".wav")
             else:
-                audio = AudioSegment.from_wav("sounds/" + str(FEED_IDs_SOUNDS_DICT[feed_id]))
+                file = random.choice(os.listdir("sounds/" + feed_id))
+                audio = AudioSegment.from_wav("sounds/" + feed_id + "/" + file)
             play(audio)
         except:
             print('Couldn\'t find the audio file. Please add one')
@@ -108,11 +98,10 @@ def message(client, feed_id, payload):
 
 print("Total feed to be subscribed: ", len(FEED_IDs))
 
-parser = argparse.ArgumentParser(description='Pass the IO key')
-parser.add_argument('key', metavar='k', type=str,  
-        help='Pass Adafruit IO key')
-args = parser.parse_args()
-ADAFRUIT_IO_KEY = args.key
+config = configparser.ConfigParser()
+config.read('config.ini')
+ADAFRUIT_IO_USERNAME = config['ADAFRUIT']['adafruit_io_username']
+ADAFRUIT_IO_KEY = config['ADAFRUIT']['adafruit_io_key']
 
 # Create an MQTT client instance.
 client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
