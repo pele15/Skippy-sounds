@@ -3,6 +3,7 @@ import os
 import random
 import configparser
 import random
+import time
 
 from pydub import AudioSegment
 from pydub.playback import play
@@ -52,6 +53,7 @@ FEED_IDs = [
             'thankyou', 
             'ricos',
             'freshii',
+            'betteryou.hello-better-you',
             
         ]
 JOKES_IDs = list(JOKES_DICT.keys())
