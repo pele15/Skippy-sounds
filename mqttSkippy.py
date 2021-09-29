@@ -3,6 +3,7 @@ import os
 import random
 import configparser
 import random
+import time
 
 from pydub import AudioSegment
 from pydub.playback import play
@@ -43,16 +44,19 @@ FEED_IDs = [
             'roll', 
             'joke-question', 
             'punchline', 
-            'caribou', 
-            'potbelly', 
-            'scan', 
+            # 'caribou', 
+            # 'potbelly', 
+            # 'scan', 
             'hungry', 
             'yes',
             'phrases', 
-            'thankyou', 
-            'ricos',
-            'freshii',
-            
+            #'thankyou', 
+            # #'ricos',
+            # #'freshii',
+            # 'betteryou.hello-better-you',
+            #'seth',
+            'pickup',
+            'open',
         ]
 JOKES_IDs = list(JOKES_DICT.keys())
 JOKES_IDs_INDS = random.sample(JOKES_IDs, len(JOKES_IDs))
