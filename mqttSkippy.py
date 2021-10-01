@@ -54,12 +54,12 @@ FEED_IDs = [
             # #'ricos',
             # #'freshii',
             # 'betteryou.hello-better-you',
-            #'seth',
+            'seth',
             #'pickup',
             #'open',
-            'redbull.ad',
-            'redbull.ofcourse',
-            'redbull.um',
+            #'redbull.ad',
+            #'redbull.ofcourse',
+            #'redbull.um',
         ]
 JOKES_IDs = list(JOKES_DICT.keys())
 JOKES_IDs_INDS = random.sample(JOKES_IDs, len(JOKES_IDs))
