@@ -1,4 +1,13 @@
 import sys
+from PyQt5.QtWidgets import (QMainWindow, QApplication, QWidget,
+                             QLineEdit, QPushButton, QVBoxLayout, QRadioButton)
+
+import json
+# from awscrt import io, mqtt, auth, http
+# import configparser
+# import publish as pub
+
+import sys
 import os
 import random
 import configparser
@@ -7,7 +16,8 @@ import time
 
 from pydub import AudioSegment
 from pydub.playback import play
-from Adafruit_IO import MQTTClient
+from functools import partial
+
 
 JOKES_DICT = {
     'guac':"guac-resp",
@@ -54,39 +64,41 @@ FEED_IDs = [
             # #'ricos',
             # #'freshii',
             # 'betteryou.hello-better-you',
-            'seth',
+            #'seth',
             #'pickup',
             #'open',
             #'redbull.ad',
             #'redbull.ofcourse',
             #'redbull.um',
         ]
+
 JOKES_IDs = list(JOKES_DICT.keys())
 JOKES_IDs_INDS = random.sample(JOKES_IDs, len(JOKES_IDs))
 
-# Define callback functions which will be called when certain events happen.
-def connected(client):
-    
-    print('Connected to Adafruit IO!  Listening for {0} changes...'.format(FEED_IDs))
-    # Subscribe to changes on a feed named DemoFeed.
-    for FEED_ID in FEED_IDs:
-        client.subscribe(FEED_ID)
 
-def subscribe(client, userdata, mid, granted_qos):
-    # This method is called when the client subscribes to a new feed.
-    print('Subscribed to {0} with QoS {1}'.format(FEED_IDs, granted_qos[0]))
-    
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
 
-def disconnected(client):
-    # Disconnected function will be called when the client disconnects.
-    print('Disconnected from Adafruit IO!')
-    sys.exit(1)
+        main_layout = QVBoxLayout()
 
-def message(client, feed_id, payload):
-    print('Feed {0} received new value: {1}'.format(feed_id, payload))
-    global joke_key
-    global ind
-    if payload == "1":
+        # Push Buttons
+        self.buttons = []
+        for i in range(len(FEED_IDs)):
+            self.buttons.append(QPushButton(FEED_IDs[i]))
+            self.buttons[i].clicked.connect(partial(self.on_button_clicked, FEED_IDs[i]))
+            main_layout.addWidget(self.buttons[i]) 
+        
+        
+        central_widget = QWidget()
+        central_widget.setLayout(main_layout)
+
+        self.setCentralWidget(central_widget)  
+
+    def on_button_clicked(self, feed_id):
+        global joke_key
+        global ind
+        print("feed id = ", feed_id)
         try:
             if (feed_id == "joke-question"):
                 joke_key = JOKES_IDs_INDS[ind]
@@ -103,22 +115,8 @@ def message(client, feed_id, payload):
             pass
 
 
-print("Total feed to be subscribed: ", len(FEED_IDs))
-
-config = configparser.ConfigParser()
-config.read('config.ini')
-ADAFRUIT_IO_USERNAME = config['ADAFRUIT']['adafruit_io_username']
-ADAFRUIT_IO_KEY = config['ADAFRUIT']['adafruit_io_key']
-
-# Create an MQTT client instance.
-client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
-# Setup the callback functions defined above.
-client.on_connect    = connected
-client.on_disconnect = disconnected
-client.on_message    = message
-client.on_subscribe  = subscribe
-
-# Connect to the Adafruit IO server.
-client.connect()
-
-client.loop_blocking()
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    w = MainWindow() 
+    w.show()
+    sys.exit(app.exec_())    
