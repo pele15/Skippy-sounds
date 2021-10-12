@@ -40,8 +40,7 @@ FEED_IDs = [
             'hello-key', 
             'bye-feed', 
             #'coffee', 
-            'friend', 
-            'jokes', 
+            'friend',  
             'drink', 
             'food-btn',
             #'food-list', 
@@ -52,6 +51,7 @@ FEED_IDs = [
             #'deliver', 
             'way', 
             #'roll', 
+            'jokes',
             'joke-question', 
             'punchline', 
             # 'caribou', 
@@ -61,15 +61,18 @@ FEED_IDs = [
             'yes',
             'phrases', 
             'thankyou', 
-            # #'ricos',
+            # 'ricos',
             # #'freshii',
             # 'betteryou.hello-better-you',
-            #'seth',
             #'pickup',
             #'open',
             #'redbull.ad',
             #'redbull.ofcourse',
             #'redbull.um',
+            'lee',
+            'rich',
+            'nick',
+            'nickHowAreYou'
         ]
 
 JOKES_IDs = list(JOKES_DICT.keys())
@@ -119,4 +122,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = MainWindow() 
     w.show()
-    sys.exit(app.exec_())    
+    sys.exit(app.exec_())

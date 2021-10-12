@@ -54,7 +54,7 @@ FEED_IDs = [
             # #'ricos',
             # #'freshii',
             # 'betteryou.hello-better-you',
-            'seth',
+            #'seth',
             #'pickup',
             #'open',
             #'redbull.ad',
