@@ -36,12 +36,12 @@ ind = 0
 joke_key = ""
 
 FEED_IDs = [
-            'ad',
+            # 'ad',
             'hello-key', 
             'bye-feed', 
             #'coffee', 
-            'friend',  
-            'drink', 
+            # 'friend',  
+            # 'drink', 
             'food-btn',
             #'food-list', 
             'great', 
@@ -66,13 +66,11 @@ FEED_IDs = [
             # 'betteryou.hello-better-you',
             #'pickup',
             #'open',
-            #'redbull.ad',
-            #'redbull.ofcourse',
-            #'redbull.um',
-            'lee',
-            'rich',
-            'nick',
-            'nickHowAreYou'
+            'walter',
+            'twin-ignitions',
+            'dad-jokes-question',
+            'dad-jokes-punchline',
+
         ]
 
 JOKES_IDs = list(JOKES_DICT.keys())
